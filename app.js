@@ -14,18 +14,21 @@ app.use(cookieParser());
 // setup database connection
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(
-	'debate-now',
+	(app.get('env') === 'production') ? process.env.DB_NAME : 'debate-now',
 	(app.get('env') === 'production') ? process.env.DB_USER_NAME : 'root',
 	(app.get('env') === 'production') ? process.env.DB_PASSWORD : process.env.DB_PASSWORD_LOCAL,
 	{
 		host: (app.get('env') === 'production') ? process.env.DB_HOST : 'localhost',
-		dialect: 'mysql',
+		dialect: (app.get('env') === 'production') ? 'mssql' : 'mysql',
 
 		pool: {
 			max: 5,
 			min: 0,
 			idle: 10000
 		},
+		dialectOptions: {
+			encrypt: (app.get('env') === 'production'),
+		}
 	}
 );
 

@@ -3,9 +3,9 @@ const router = express.Router();
 
 module.exports = function (sequelize) {
 
-  User = require('../models/userModel')(sequelize);
-  Room = require('../models/roomModel')(sequelize);
-  Event = require('../models/eventModel')(sequelize);
+  User = require('../models/users')(sequelize);
+  Room = require('../models/rooms')(sequelize);
+  Event = require('../models/events')(sequelize);
   User.belongsTo(Event); // adds eventId to user model
   User.belongsTo(Room); // adds roomId to user model
 

@@ -3,8 +3,8 @@ const router = express.Router();
 
 module.exports = function (sequelize) {
 
-  Room = require('../models/roomModel')(sequelize);
-  Event = require('../models/eventModel')(sequelize);
+  Room = require('../models/rooms')(sequelize);
+  Event = require('../models/events')(sequelize);
   Room.belongsTo(Event); // adds eventId to room model
 
   router.get('/', async function(req, res) {

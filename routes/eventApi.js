@@ -3,7 +3,7 @@ const router = express.Router();
 
 module.exports = function (sequelize) {
 
-	Event = require('../models/eventModel')(sequelize);
+	Event = require('../models/events')(sequelize);
 
 	router.get('/', async function(req, res) {
 		try {

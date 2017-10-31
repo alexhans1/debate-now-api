@@ -2,13 +2,13 @@
 
 const Sequelize = require('sequelize');
 
-module.exports = function (sequelize) {
-
+module.exports = (sequelize) => {
   return sequelize.define('users', {
     id: {
-      type: Sequelize.INTEGER,
-      primaryKey: true,
+      allowNull: false,
       autoIncrement: true,
+      primaryKey: true,
+      type: Sequelize.INTEGER,
     },
     name: {
       type: Sequelize.STRING,
@@ -26,5 +26,11 @@ module.exports = function (sequelize) {
     position: {
       type: Sequelize.STRING(45),
     },
+  }, {
+    classMethods: {
+      associate: function (models) {
+        // associations can be defined here
+      }
+    }
   });
 };

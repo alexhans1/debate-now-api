@@ -5,7 +5,7 @@ module.exports = {
   development: {
     username: 'root',
     password: process.env.DB_PASSWORD_LOCAL,
-    database: 'test123',
+    database: 'debate-now',
     host: 'localhost',
     dialect: 'mysql',
   },

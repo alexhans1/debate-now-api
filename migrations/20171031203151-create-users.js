@@ -25,21 +25,9 @@ module.exports = {
       },
       eventId: {
         type: Sequelize.INTEGER,
-        onUpdate: 'cascade',
-        onDelete: 'cascade',
-        references: {
-          model: "events",
-          key: "id",
-        }
       },
       roomId: {
         type: Sequelize.INTEGER,
-        onUpdate: 'cascade',
-        onDelete: 'cascade',
-        references: {
-          model: "rooms",
-          key: "id",
-        }
       },
       createdAt: {
         allowNull: false,

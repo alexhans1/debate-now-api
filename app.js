@@ -19,16 +19,13 @@ const sequelize = new Sequelize(
 	(app.get('env') === 'production') ? process.env.DB_PASSWORD : process.env.DB_PASSWORD_LOCAL,
 	{
 		host: (app.get('env') === 'production') ? process.env.DB_HOST : 'localhost',
-		dialect: (app.get('env') === 'production') ? 'mssql' : 'mysql',
+		dialect: 'mysql',
 
 		pool: {
 			max: 5,
 			min: 0,
 			idle: 10000
 		},
-		dialectOptions: {
-			encrypt: (app.get('env') === 'production'),
-		}
 	}
 );
 
@@ -40,6 +37,15 @@ sequelize.authenticate()
 .catch(err => {
 	console.error('Unable to connect to the database:', err);
 });
+
+// disable CORS when local
+if (process.env.NODE_ENV !== 'production') {
+  app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+}
 
 //setup routes URIs
 const userApi = require('./routes/userApi')(sequelize);

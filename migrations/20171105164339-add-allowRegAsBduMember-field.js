@@ -28,6 +28,6 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
-    queryInterface.removeColumn('events', 'allowRegFromMembersArea')
+    queryInterface.sequelize.query("ALTER TABLE events DROP COLUMN allowRegFromMembersArea;")
   }
 };

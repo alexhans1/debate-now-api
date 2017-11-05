@@ -38,7 +38,8 @@ module.exports = function (sequelize) {
 				type: req.body.type,
 				date: req.body.date,
 				password: req.body.password,
-			});
+        allowRegFromMembersArea: req.body.allowRegFromMembersArea,
+      });
 			console.info('Creating new event.');
 			res.send(event.toJSON());
 		} catch (ex) {
@@ -55,6 +56,7 @@ module.exports = function (sequelize) {
         status: req.body.status,
         date: req.body.date,
         password: req.body.password,
+        allowRegFromMembersArea: req.body.allowRegFromMembersArea,
 			}, {
 				where: {
 					id: req.params.id

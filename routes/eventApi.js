@@ -16,6 +16,21 @@ module.exports = function (sequelize) {
 		}
 	});
 
+  router.get('/bduEvents', async function(req, res) {
+    try {
+      events = await Event.findAll({
+        where: {
+          allowRegFromMembersArea: 1,
+        }
+      });
+      console.info('Fetching all BDU events.');
+      res.send(events);
+    } catch (ex) {
+      console.error(ex);
+      next('Error while fetching all BDU events.');
+    }
+  });
+
 	router.get('/:id', async function(req, res) {
 		try {
 			event = await Event.findOne({

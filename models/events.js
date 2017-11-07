@@ -28,6 +28,11 @@ module.exports = (sequelize) => {
       type: Sequelize.STRING,
       allowNull: false,
     },
+    allowRegFromMembersArea: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+      defaultValue: 0,
+    },
   }, {
     classMethods: {
       associate: function (models) {

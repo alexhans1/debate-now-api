@@ -11,11 +11,9 @@ module.exports = {
     */
     queryInterface.addColumn(
       'events',
-      'allowRegFromMembersArea',
+      'image',
       {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: 0,
+        type: Sequelize.STRING,
       }
     );
   },
@@ -28,6 +26,6 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
-    queryInterface.sequelize.query("ALTER TABLE events DROP COLUMN allowRegFromMembersArea;");
+    queryInterface.sequelize.query("ALTER TABLE events DROP COLUMN image;")
   }
 };

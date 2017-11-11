@@ -28,6 +28,9 @@ module.exports = (sequelize) => {
       type: Sequelize.STRING,
       allowNull: false,
     },
+    image: {
+      type: Sequelize.STRING,
+    },
   }, {
     classMethods: {
       associate: function (models) {

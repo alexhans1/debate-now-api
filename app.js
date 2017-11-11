@@ -50,9 +50,11 @@ app.use(function(req, res, next) {
 const userApi = require('./routes/userApi')(sequelize);
 const roomApi = require('./routes/roomApi')(sequelize);
 const eventApi = require('./routes/eventApi')(sequelize);
+const imagesApi = require('./routes/imagesApi')(sequelize);
 app.use('/user', userApi);
 app.use('/room', roomApi);
 app.use('/event', eventApi);
+app.use('/images', imagesApi);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

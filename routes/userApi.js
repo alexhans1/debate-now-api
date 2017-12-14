@@ -57,6 +57,7 @@ module.exports = function (sequelize) {
         role: req.body.role,
         format: req.body.format,
         language: req.body.language,
+        teamPartner: req.body.teamPartner,
         eventId: req.body.eventId,
         roomId: req.body.roomId,
         position: req.body.position,

@@ -23,6 +23,9 @@ module.exports = (sequelize) => {
     language: {
       type: Sequelize.STRING(45),
     },
+    teamPartner: {
+      type: Sequelize.STRING,
+    },
     position: {
       type: Sequelize.STRING(45),
     },

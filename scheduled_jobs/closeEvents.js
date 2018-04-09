@@ -11,7 +11,10 @@ module.exports = (sequelize) => {
           status: 'OPEN',
           date: {
             lte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
-          }
+          },
+          id: {
+            notIn: [51, 61],
+          },
         }
       }).then((event, err) => {
         if (err) {

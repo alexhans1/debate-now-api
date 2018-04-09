@@ -14,7 +14,7 @@ app.use(cookieParser());
 // setup database connection
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(
-  (app.get('env') === 'production') ? process.env.DB_NAME : 'debate-now',
+  (app.get('env') === 'production') ? process.env.DB_NAME : 'debate_now',
   (app.get('env') === 'production') ? process.env.DB_USER_NAME : 'root',
   (app.get('env') === 'production') ? process.env.DB_PASSWORD : process.env.DB_PASSWORD_LOCAL,
   {
@@ -55,6 +55,9 @@ app.use('/user', userApi);
 app.use('/room', roomApi);
 app.use('/event', eventApi);
 app.use('/images', imagesApi);
+
+//setup scheduled jobs
+require('./scheduled_jobs/closeEvents')(sequelize);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

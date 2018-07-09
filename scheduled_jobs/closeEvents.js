@@ -2,7 +2,7 @@ module.exports = (sequelize) => {
   const schedule = require('node-schedule');
   const Event = require('../models/events')(sequelize);
 
-  schedule.scheduleJob('0 14 * * 1', () => {
+  schedule.scheduleJob('0 14 * * 2', () => {
     console.log('Run Scheduled Job: Close Open and Old Events.');
     try {
       Event.update({

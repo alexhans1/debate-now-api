@@ -2,7 +2,7 @@ module.exports = (sequelize) => {
   const schedule = require('node-schedule');
   const Event = require('../models/events')(sequelize);
 
-  schedule.scheduleJob('52 14 * * 1', () => {
+  schedule.scheduleJob('0 14 * * 1', () => {
     console.log('Run Scheduled Job: Close Open and Old Events.');
     try {
       Event.update({
@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
         where: {
           status: 'OPEN',
           date: {
-            lte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
+            lte: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000).toISOString()
           },
           id: {
             notIn: [51, 61],
